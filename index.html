@@ -5,44 +5,8 @@
   
 <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script>
-  var firebaseConfig = {
-    apiKey: "AIzaSyBWc-FnPhYZysYDZnP65f_jWZPzjVmV31o",
-    authDomain: "weather-station-880e7.firebaseapp.com",
-    databaseURL: "https://weather-station-880e7-default-rtdb.firebaseio.com",
-    projectId: "weather-station-880e7",
-    storageBucket: "weather-station-880e7.appspot.com",
-    messagingSenderId: "243733265032",
-    appId: "1:243733265032:web:2b7431e0b2fb091814fd3d"
-  };
-  firebase.initializeApp(firebaseConfig);  
-</script>  
 </head>
   <body>
-    <table style="width:100%" id="ex-table">
-      <tr id="tr">
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>CIN</th>
-      </tr>
-    </table>
-
-    <script>
-      var database = firebase.database();
-      database.ref('BME280').once('value', function(snapshot) {
-        if (snapshot.exists()) {
-          var content = '';
-          snapshot.forEach(function(data) {
-            var val = data.val();
-            content += '<tr>';
-            content += '<td>' + val.TEMPERATURE + '</td>';
-            content += '<td>' + val.HUMIDITY + '</td>';
-            content += '<td>' + val.PRESSURE + '</td>';
-            content += '</tr>';
-          });
-          $('#ex-table').append(content);
-        }
-      });
-    </script>
+    <p>test</p>
   </body>
 </html>
