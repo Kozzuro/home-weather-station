@@ -2,11 +2,47 @@
 <html>
 <head>
 <title>Page Title</title>
+  
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyBWc-FnPhYZysYDZnP65f_jWZPzjVmV31o",
+    authDomain: "weather-station-880e7.firebaseapp.com",
+    databaseURL: "https://weather-station-880e7-default-rtdb.firebaseio.com",
+    projectId: "weather-station-880e7",
+    storageBucket: "weather-station-880e7.appspot.com",
+    messagingSenderId: "243733265032",
+    appId: "1:243733265032:web:2b7431e0b2fb091814fd3d"
+  };
+  firebase.initializeApp(firebaseConfig);  
+</script>  
 </head>
-<body>
+  <body>
+    <table style="width:100%" id="ex-table">
+      <tr id="tr">
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>CIN</th>
+      </tr>
+    </table>
 
-<h1>This is a TEST</h1>
-<p>This is a TEST</p>
-
-</body>
+    <script>
+      var database = firebase.database();
+      database.ref('BME280').once('value', function(snapshot) {
+        if (snapshot.exists()) {
+          var content = '';
+          snapshot.forEach(function(data) {
+            var val = data.val();
+            content += '<tr>';
+            content += '<td>' + val.firstName + '</td>';
+            content += '<td>' + val.lastName + '</td>';
+            content += '<td>' + val.cin + '</td>';
+            content += '</tr>';
+          });
+          $('#ex-table').append(content);
+        }
+      });
+    </script>
+  </body>
 </html>
