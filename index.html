@@ -2,13 +2,37 @@
 <html>
 <head>
 <title>Page Title</title>
-  
-<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-database.js"></script>
 </head>
-<body>    
-    <p>test</p>
-  </body>
+<body>
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyBWc-FnPhYZysYDZnP65f_jWZPzjVmV31o",
+    authDomain: "weather-station-880e7.firebaseapp.com",
+    databaseURL: "https://weather-station-880e7-default-rtdb.firebaseio.com",
+    projectId: "weather-station-880e7",
+    storageBucket: "weather-station-880e7.appspot.com",
+    messagingSenderId: "243733265032",
+    appId: "1:243733265032:web:2b7431e0b2fb091814fd3d"
+  };
+    firebase.initializeApp(firebaseConfig);
+</script>
+
+<script>
+//var db = firebase.database().ref("BME280/");
+var database = firebase.database();
+var ratesRef = database.ref("TEMPERATURE");
+ratesRef.on('child_added', function(snapshot){
+    console.log("Working");
+    console.log("lat:" + snapshot.val().latitude);
+}, function(err) {console.log(err)});
+</script>
+
+
+
+<h1>This is a TEST</h1>
+<p>This is a TEST</p>
+
+</body>
 </html>
